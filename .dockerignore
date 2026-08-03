@@ -1,0 +1,11 @@
+.git
+.github
+.next
+node_modules
+.venv
+__pycache__
+.pytest_cache
+artifacts
+checkpoints
+data/raw
+data/processed
