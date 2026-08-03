@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "urban-heat-mitigation-ai"
+version = "1.0.0"
+description = "Physics-aware urban heat analytics and cooling intervention optimization"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.30,<1",
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<3",
+  "scikit-learn>=1.5,<2",
+  "pydantic>=2.8,<3"
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.27,<1",
+  "pytest>=8,<10",
+  "ruff>=0.8,<1"
+]
+
+[tool.setuptools]
+package-dir = {"" = "ml"}
+
+[tool.setuptools.packages.find]
+where = ["ml"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "ml", "services/api"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
