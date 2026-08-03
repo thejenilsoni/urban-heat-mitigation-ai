@@ -1,0 +1,11 @@
+export type InterventionKind = "tree_canopy" | "cool_roof" | "green_roof" | "permeable_surface" | "water_corridor" | "traffic_heat_reduction";
+export type Assessment = { predicted: number; heatIndex: number; uhi: number; risk: number; exposed: number; vulnerable: number; confidence: number; contributions: Record<string, number> };
+export type Zone = { id: string; name: string; row: number; column: number; area: number; lst: number; airTemp: number; humidity: number; wind: number; ndvi: number; ndbi: number; albedo: number; impervious: number; tree: number; water: number; building: number; anthropogenic: number; populationDensity: number; vulnerableFraction: number; assessment: Assessment };
+export type Scenario = { zone: Zone; before: Assessment; after: Assessment; kind: InterventionKind; coverage: number; cost: number; cooling: number; riskReduction: number; protected: number };
+export type Portfolio = { items: Array<Scenario & { score: number }>; spent: number; cooling: number; protected: number; riskReduction: number };
+export const interventionCatalog: Record<InterventionKind, { label: string; short: string; cost: number; accent: string }>;
+export function buildDemoCity(): Zone[];
+export function assessZone(zone: Omit<Zone, "assessment">): Assessment;
+export function simulateZone(zone: Zone, kind: InterventionKind, coverage: number): Scenario;
+export function optimizePortfolio(zones: Zone[], budget: number, enabledKinds?: InterventionKind[]): Portfolio;
+export function citySummary(zones: Zone[]): { predicted: number; uhi: number; exposed: number; vulnerable: number; highRisk: number };
