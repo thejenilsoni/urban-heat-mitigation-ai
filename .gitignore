@@ -1,0 +1,32 @@
+# JavaScript
+node_modules/
+.next/
+out/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Models and data
+artifacts/
+checkpoints/
+data/raw/
+data/processed/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editors and OS
+.DS_Store
+.vscode/
+.idea/
+
+data/samples/delhi_demo.json
